@@ -13,62 +13,62 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MowerServiceTest {
 
-    //@Test
-    //@DisplayName("The mower run straight ahead")
+    @Test
+    @DisplayName("The mower run straight ahead")
     void runMowersWithOneSimpleMower() {
 
         var mowerService = new MowerService();
 
         var lawn = new PositionBO(5, 5);
-        var mowerBOs = List.of(new MowerBO(new PositionBO(1, 2), OrientationType.N, "A"));
+        var mowers = List.of(new MowerBO(new PositionBO(1, 2), OrientationType.N, "A"));
         var mowersSolution = List.of(new MowerBO(new PositionBO(1, 3), OrientationType.N, ""));
 
-        assertEquals(mowersSolution, mowerService.runMowers(mowerBOs, lawn));
+        assertEquals(mowersSolution, mowerService.runMowers(mowers, lawn));
     }
 
-    //@Test
-    //@DisplayName("The mower turn on himself at max lawn range")
+    @Test
+    @DisplayName("The mower turn on himself at max lawn range")
     void runMowersTurnOnHimself() {
 
         var mowerService = new MowerService();
 
         var lawn = new PositionBO(5, 5);
-        var mowerBOs = List.of(new MowerBO(new PositionBO(5, 5), OrientationType.N, "GGDDGDGDDGDG"));
+        var mowers = List.of(new MowerBO(new PositionBO(5, 5), OrientationType.N, "GGDDGDGDDGDG"));
         var mowersSolution = List.of(new MowerBO(new PositionBO(5, 5), OrientationType.N, ""));
 
-        assertEquals(mowersSolution, mowerService.runMowers(mowerBOs, lawn));
+        assertEquals(mowersSolution, mowerService.runMowers(mowers, lawn));
     }
 
-    //@Test
-    //@DisplayName("The mower try to come out the field straight ahead")
+    @Test
+    @DisplayName("The mower try to come out the field straight ahead")
     void runMowersWithOneMowerBehindMapLimit() {
 
         var mowerService = new MowerService();
 
         var lawn = new PositionBO(5, 5);
-        var mowerBOs = List.of(new MowerBO(new PositionBO(1, 2), OrientationType.N, "AAAAAAAA"));
+        var mowers = List.of(new MowerBO(new PositionBO(1, 2), OrientationType.N, "AAAAAAAA"));
         var mowersSolution = List.of(new MowerBO(new PositionBO(1, 5), OrientationType.N, ""));
 
-        assertEquals(mowersSolution, mowerService.runMowers(mowerBOs, lawn));
+        assertEquals(mowersSolution, mowerService.runMowers(mowers, lawn));
     }
 
-    //@Test
-    //@DisplayName("Two mower run the field")
+    @Test
+    @DisplayName("Two mower run the field")
     void runMowersWithTwoMower() {
 
         var mowerService = new MowerService();
 
         var lawn = new PositionBO(5, 5);
-        var mowerBOs = List.of(
+        var mowers = List.of(
                 new MowerBO(new PositionBO(1, 2), OrientationType.N, "GAGAGAGAA"),
                 new MowerBO(new PositionBO(3, 3), OrientationType.E, "AADAADADDA")
         );
         var mowersSolution = List.of(
                 new MowerBO(new PositionBO(1, 3), OrientationType.N, ""),
                 new MowerBO(new PositionBO(5, 1), OrientationType.E, "")
-                );
+        );
 
-        assertEquals(mowersSolution, mowerService.runMowers(mowerBOs, lawn));
+        assertEquals(mowersSolution, mowerService.runMowers(mowers, lawn));
     }
 
 }

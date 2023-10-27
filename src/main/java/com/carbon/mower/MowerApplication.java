@@ -2,7 +2,7 @@ package com.carbon.mower;
 
 public class MowerApplication {
 
-	public static void main(String[] args) {
-	}
+    public static void main(String[] args) {
+    }
 
 }
